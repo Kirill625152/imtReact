@@ -1,0 +1,289 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('./cartin/fonFon.png');
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.loading-screen.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loading-spinner {
+  background-image: url('./cartin/skov.svg');
+  
+  border-radius: 50%;
+  width: 154px;
+  height: 166px;
+  animation: spin 1s linear infinite;
+}
+
+:root {
+  --background-img: url(./cartin/fonFon.png) ;
+  --background-fon-ty:#ffffff ;
+  --card: #cfcccc;
+  --background-color: #ffffff;
+  --text-color: #333333;
+  --card-background: linear-gradient(135deg, #94736a, #e6d7d2);
+  --card-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --input-background: rgba(255, 255, 255, 0.8);
+  --input-border: #dddddd;
+  --button-background: linear-gradient(135deg, #4f4f4f, #838587);  
+  --button-hover-background: linear-gradient(135deg, #838587, #4f4f4f);
+  --primary-gradient: linear-gradient(135deg, #2b2b2b, #838587);
+  --secondary-gradient: linear-gradient(135deg, #d84315, #ff7043);
+}
+
+[data-theme="dark"] {
+  --background-img: #1a1a1a ;
+  --background-fon-ty: url('./cartin/fonNigh.png') ;
+  --card: #333333;
+  --background-color: #1a1a1a;
+  --text-color: #f5f5f5;
+  --card-background: #2a2a2a;
+  --card-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  --input-background: rgba(42, 42, 42, 0.8);
+  --input-border: #444444;
+  --button-background: linear-gradient(135deg, #2575fc, #6a11cb);
+  --button-hover-background: linear-gradient(135deg, #6a11cb, #2575fc);
+  --primary-gradient: linear-gradient(135deg, #2575fc, #6a11cb);
+  --secondary-gradient: linear-gradient(135deg, #ff7043, #d84315);
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: var(--background-img);
+  color: var(--text-color);
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.app {
+  max-width: 1200px;
+  width: 100%;
+  background: var(--background-fon-ty);
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: var(--card-shadow);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.but{
+  margin-left: 80px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--text-color);
+  margin-bottom: 20px;
+  grid-column: 1 / -1;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.calorie-counter , .calculator, .body-composition {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+   .recipes-page, .mass-gain-recipes, .maintenance-recipes {
+  background: var(--card-background);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.calculator:hover, .body-composition:hover, .calorie-counter:hover, .recipes-page:hover, .mass-gain-recipes:hover, .maintenance-recipes:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  margin-bottom: 15px;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+input, select {
+  margin: 5px 0;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--input-border);
+  border-radius: 10px;
+  font-size: 1rem;
+  background: var(--input-background);
+  transition: border-color 0.3s ease;
+  color: var(--text-color);
+}
+
+input:focus, select:focus {
+  border-color: #6a11cb;
+  outline: none;
+}
+
+button {
+  background: var(--button-background);
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 1rem;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+  background: var(--button-hover-background);
+  transform: scale(1.05);
+}
+
+p {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--button-background);
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--button-hover-background);
+  transform: scale(1.05);
+}
+
+/* Анимация для карточек */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.calculator, .body-composition, .calorie-counter, .recipes-page, .mass-gain-recipes, .maintenance-recipes {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Адаптивность для планшетов (ширина экрана до 768px) */
+@media (max-width: 768px) {
+  .app {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  input, select {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+
+  button {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Адаптивность для телефонов (ширина экрана до 480px) */
+@media (max-width: 480px) {
+  .app {
+    grid-template-columns: 1fr;
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  input, select {
+    padding: 6px;
+    font-size: 0.8rem;
+  }
+
+  button {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+
+  p {
+    font-size: 0.8rem;
+  }
+}
